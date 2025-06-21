@@ -1,0 +1,35 @@
+[0.008s] Invoking command in '/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/niu/Desktop/ROBOCON25_simulation-master/install/visualizer:/home/niu/Desktop/ROBOCON25_simulation-master/install/omni_mpc_controller:/home/niu/Desktop/ROBOCON25_simulation-master/install/new_teleotwistkeyboard:/home/niu/Desktop/ROBOCON25_simulation-master/install/lidar_avoidance:/home/niu/Desktop/ROBOCON25_simulation-master/install/laser:/opt/ros/humble /usr/bin/cmake --build /home/niu/Desktop/ros2_hoop_detector/build/hoop_detector -- -j20 -l20
+[0.051s] [ 50%] Built target hoop_detector_algorithm
+[0.063s] [35m[1mConsolidate compiler generated dependencies of target hoop_detector_component[0m
+[0.079s] [ 75%] [32mBuilding CXX object CMakeFiles/hoop_detector_component.dir/src/hoop_detector_node.cpp.o[0m
+[3.518s] [100%] [32m[1mLinking CXX shared library libhoop_detector_component.so[0m
+[3.708s] [100%] Built target hoop_detector_component
+[3.716s] Invoked command in '/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/niu/Desktop/ROBOCON25_simulation-master/install/visualizer:/home/niu/Desktop/ROBOCON25_simulation-master/install/omni_mpc_controller:/home/niu/Desktop/ROBOCON25_simulation-master/install/new_teleotwistkeyboard:/home/niu/Desktop/ROBOCON25_simulation-master/install/lidar_avoidance:/home/niu/Desktop/ROBOCON25_simulation-master/install/laser:/opt/ros/humble /usr/bin/cmake --build /home/niu/Desktop/ros2_hoop_detector/build/hoop_detector -- -j20 -l20
+[3.748s] Invoking command in '/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/niu/Desktop/ROBOCON25_simulation-master/install/visualizer:/home/niu/Desktop/ROBOCON25_simulation-master/install/omni_mpc_controller:/home/niu/Desktop/ROBOCON25_simulation-master/install/new_teleotwistkeyboard:/home/niu/Desktop/ROBOCON25_simulation-master/install/lidar_avoidance:/home/niu/Desktop/ROBOCON25_simulation-master/install/laser:/opt/ros/humble /usr/bin/cmake --install /home/niu/Desktop/ros2_hoop_detector/build/hoop_detector
+[3.752s] -- Install configuration: ""
+[3.752s] -- Execute custom install script
+[3.752s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/lib/libhoop_detector_algorithm.a
+[3.752s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/lib/libhoop_detector_component.so
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/include//hoop_detector/hoop_detector.hpp
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/environment/library_path.sh
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/environment/library_path.dsv
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/ament_index/resource_index/package_run_dependencies/hoop_detector
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/ament_index/resource_index/parent_prefix_path/hoop_detector
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/environment/ament_prefix_path.sh
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/environment/ament_prefix_path.dsv
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/environment/path.sh
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/environment/path.dsv
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/local_setup.bash
+[3.753s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/local_setup.sh
+[3.754s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/local_setup.zsh
+[3.754s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/local_setup.dsv
+[3.754s] -- Symlinking: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/package.dsv
+[3.760s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/ament_index/resource_index/packages/hoop_detector
+[3.760s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/ament_index/resource_index/rclcpp_components/hoop_detector
+[3.760s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/cmake/ament_cmake_export_include_directories-extras.cmake
+[3.760s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/cmake/ament_cmake_export_libraries-extras.cmake
+[3.760s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/cmake/ament_cmake_export_dependencies-extras.cmake
+[3.760s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/cmake/hoop_detectorConfig.cmake
+[3.760s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/cmake/hoop_detectorConfig-version.cmake
+[3.760s] -- Up-to-date symlink: /home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/package.xml
+[3.762s] Invoked command in '/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/niu/Desktop/ROBOCON25_simulation-master/install/visualizer:/home/niu/Desktop/ROBOCON25_simulation-master/install/omni_mpc_controller:/home/niu/Desktop/ROBOCON25_simulation-master/install/new_teleotwistkeyboard:/home/niu/Desktop/ROBOCON25_simulation-master/install/lidar_avoidance:/home/niu/Desktop/ROBOCON25_simulation-master/install/laser:/opt/ros/humble /usr/bin/cmake --install /home/niu/Desktop/ros2_hoop_detector/build/hoop_detector

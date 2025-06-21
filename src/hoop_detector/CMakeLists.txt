@@ -22,7 +22,7 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
-# find_package(std_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 
 # 额外的包含目录（OpenCV 已经在 find_package 中给出）
 include_directories(
@@ -58,7 +58,7 @@ ament_target_dependencies(hoop_detector_algorithm
   tf2_ros
   tf2_geometry_msgs
   visualization_msgs
-  # std_msgs
+  std_msgs
 )
 
 # 2. 组件库
@@ -77,7 +77,7 @@ ament_target_dependencies(hoop_detector_component
   tf2_ros
   tf2_geometry_msgs
   visualization_msgs
-  # std_msgs
+  std_msgs
 )
 
 target_link_libraries(hoop_detector_component

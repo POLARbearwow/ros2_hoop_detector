@@ -6,6 +6,7 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include "rclcpp_components/register_node_macro.hpp"
+#include <cmath>
 
 using std::placeholders::_1;
 
@@ -35,7 +36,8 @@ HoopDetectorNode::HoopDetectorNode(const rclcpp::NodeOptions & options)
 
     // 发布位姿
     pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(pose_topic, 10);
-    RCLCPP_INFO(get_logger(), "Publishing pose on: %s", pose_topic.c_str());
+    pose_smooth_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(pose_topic + "_smooth", 10);
+    RCLCPP_INFO(get_logger(), "Publishing pose on: %s (raw) and %s (smooth)", pose_topic.c_str(), (pose_topic+"_smooth").c_str());
 }
 
 void HoopDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstSharedPtr & msg)
@@ -72,6 +74,14 @@ void HoopDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstSharedP
             pose_msg.pose.position.z = tvec[2];
             pose_msg.pose.orientation.w = 1.0; // 暂无姿态
             pose_pub_->publish(pose_msg);
+
+            // 平滑 XYZ
+            cv::Vec3f smooth_pos = detector_.getSmoothedPosition(tvec);
+            geometry_msgs::msg::PoseStamped smooth_msg = pose_msg;
+            smooth_msg.pose.position.x = smooth_pos[0];
+            smooth_msg.pose.position.y = smooth_pos[1];
+            smooth_msg.pose.position.z = smooth_pos[2];
+            pose_smooth_pub_->publish(smooth_msg);
         }
 
         // 发布调试图像

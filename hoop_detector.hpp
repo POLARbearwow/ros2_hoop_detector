@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <deque> // Added for std::deque
 
 class HoopDetector {
 public:
@@ -41,6 +42,7 @@ public:
     // 新增PnP相关函数
     void initializeCameraParams();
     cv::Vec3f solvePnP(const cv::Point& center, int radius);
+    cv::Vec3f getSmoothedPosition(const cv::Vec3f & new_pos);
     void setCameraParams(const cv::Mat& camera_matrix, const cv::Mat& dist_coeffs);
 
 private:
@@ -85,6 +87,11 @@ private:
     
     // 时间统计
     std::map<std::string, double> timing_;
+
+    // 平滑相关
+    static constexpr int N_FRAMES_SMOOTHING = 15;
+    static constexpr int N_TRIM = 2;
+    std::deque<cv::Vec3f> recent_positions_;
 
     // 相机参数
     cv::Mat camera_matrix_;

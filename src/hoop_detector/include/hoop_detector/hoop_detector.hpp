@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <deque>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
@@ -46,6 +47,9 @@ public:
     void initializeCameraParams();
     cv::Vec3f solvePnP(const cv::Point& center, int radius);
     void setCameraParams(const cv::Mat& camera_matrix, const cv::Mat& dist_coeffs);
+
+    // 位置平滑
+    cv::Vec3f getSmoothedPosition(const cv::Vec3f & new_pos);
 
 private:
     // 新增：日志控制相关
@@ -94,6 +98,11 @@ private:
     cv::Mat camera_matrix_;
     cv::Mat dist_coeffs_;
     const double HOOP_DIAMETER_METERS = 0.45;  // 篮筐直径（米）
+
+    // 平滑相关
+    static constexpr int N_FRAMES_SMOOTHING = 15; // 滑动窗口大小
+    static constexpr int N_TRIM = 2;             // 截尾个数
+    std::deque<cv::Vec3f> recent_positions_;
     
     // 辅助函数
     void getRPY(const cv::Mat& R, double& roll, double& pitch, double& yaw);
@@ -115,6 +124,7 @@ private:
     image_transport::Subscriber image_sub_;
     image_transport::Publisher  debug_pub_;
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pose_pub_;
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pose_smooth_pub_;
 
     std::string camera_frame_;
 };

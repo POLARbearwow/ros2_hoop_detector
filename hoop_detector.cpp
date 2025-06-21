@@ -557,3 +557,30 @@ cv::Vec3f HoopDetector::solvePnP(const cv::Point& center, int radius) {
         return cv::Vec3f(0, 0, 0);
     }
 } 
+
+// === 平滑位置计算 ===
+cv::Vec3f HoopDetector::getSmoothedPosition(const cv::Vec3f & new_pos) {
+    recent_positions_.push_back(new_pos);
+    if (recent_positions_.size() > N_FRAMES_SMOOTHING) {
+        recent_positions_.pop_front();
+    }
+
+    const size_t N = recent_positions_.size();
+    if (N < static_cast<size_t>(2 * N_TRIM + 1)) {
+        cv::Vec3f sum(0,0,0);
+        for (const auto & p : recent_positions_) sum += p;
+        return sum * (1.0f / static_cast<float>(N));
+    }
+
+    std::vector<float> xs, ys, zs;
+    xs.reserve(N); ys.reserve(N); zs.reserve(N);
+    for (auto & p : recent_positions_) {
+        xs.push_back(p[0]); ys.push_back(p[1]); zs.push_back(p[2]);
+    }
+    auto trimMean = [&](std::vector<float> & vec){
+        std::sort(vec.begin(), vec.end());
+        float s=0.0f; for(size_t i=N_TRIM;i<vec.size()-N_TRIM;++i) s+=vec[i];
+        return s/ static_cast<float>(vec.size()-2*N_TRIM);
+    };
+    return cv::Vec3f(trimMean(xs), trimMean(ys), trimMean(zs));
+} 
