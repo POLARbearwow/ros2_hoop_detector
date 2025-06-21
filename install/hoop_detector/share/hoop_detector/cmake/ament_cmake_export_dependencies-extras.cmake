@@ -1,0 +1,1 @@
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake

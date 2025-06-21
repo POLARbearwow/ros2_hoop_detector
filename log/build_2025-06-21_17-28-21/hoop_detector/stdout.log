@@ -1,0 +1,4 @@
+[35m[1mConsolidate compiler generated dependencies of target hoop_detector_algorithm[0m
+[ 50%] Built target hoop_detector_algorithm
+[35m[1mConsolidate compiler generated dependencies of target hoop_detector_component[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/hoop_detector_component.dir/src/hoop_detector_node.cpp.o[0m

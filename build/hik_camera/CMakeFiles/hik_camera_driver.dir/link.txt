@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhik_camera_driver.a CMakeFiles/hik_camera_driver.dir/src/hik_camera.cpp.o
+/usr/bin/ranlib libhik_camera_driver.a

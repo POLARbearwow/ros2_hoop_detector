@@ -1,0 +1,6 @@
+[35m[1mConsolidate compiler generated dependencies of target hoop_detector_algorithm[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/hoop_detector_algorithm.dir/home/niu/Desktop/ros2_hoop_detector/hoop_detector.cpp.o[0m
+[ 50%] [32m[1mLinking CXX static library libhoop_detector_algorithm.a[0m
+[ 50%] Built target hoop_detector_algorithm
+[35m[1mConsolidate compiler generated dependencies of target hoop_detector_component[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/hoop_detector_component.dir/src/hoop_detector_node.cpp.o[0m

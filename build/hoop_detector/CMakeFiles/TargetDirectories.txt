@@ -1,0 +1,11 @@
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/uninstall.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/hoop_detector_uninstall.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/hoop_detector_algorithm.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/hoop_detector_component.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/test.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/edit_cache.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/rebuild_cache.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/list_install_components.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/install.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/install/local.dir
+/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/CMakeFiles/install/strip.dir

@@ -1,0 +1,137 @@
+[0.073s] [34mcolcon[0m [1;30mDEBUG[0m [32mCommand line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'hoop_detector', '--symlink-install'][0m
+[0.073s] [34mcolcon[0m [1;30mDEBUG[0m [32mParsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=20, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['hoop_detector'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x735900e25a20>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x735900f93040>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x735900f93040>>)[0m
+[0.194s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(colcon_meta) check parameters
+[0.194s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) check parameters
+[0.194s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) check parameters
+[0.194s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) check parameters
+[0.194s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(colcon_meta) discover
+[0.194s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) discover
+[0.194s] [34mcolcon.colcon_core.package_discovery[0m [1;30mINFO[0m Crawling recursively for packages in '/home/niu/Desktop/ros2_hoop_detector'
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ignore'
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ignore_ament_install'
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['colcon_pkg']
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'colcon_pkg'
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['colcon_meta']
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'colcon_meta'
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['ros']
+[0.194s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ros'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['cmake', 'python']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'cmake'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'python'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['python_setup_py']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'python_setup_py'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) by extension 'ignore'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) ignored
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) by extension 'ignore'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) ignored
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) by extension 'ignore'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) ignored
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'ignore'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'ignore_ament_install'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['colcon_pkg']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'colcon_pkg'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['colcon_meta']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'colcon_meta'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['ros']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'ros'
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['cmake', 'python']
+[0.207s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'cmake'
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'python'
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['python_setup_py']
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'python_setup_py'
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extensions ['ignore', 'ignore_ament_install']
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extension 'ignore'
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extension 'ignore_ament_install'
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extensions ['colcon_pkg']
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extension 'colcon_pkg'
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extensions ['colcon_meta']
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extension 'colcon_meta'
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extensions ['ros']
+[0.208s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hik_camera) by extension 'ros'
+[0.209s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'src/hik_camera' with type 'ros.ament_cmake' and name 'hik_camera'[0m
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extensions ['ignore', 'ignore_ament_install']
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extension 'ignore'
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extension 'ignore_ament_install'
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extensions ['colcon_pkg']
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extension 'colcon_pkg'
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extensions ['colcon_meta']
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extension 'colcon_meta'
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extensions ['ros']
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/hoop_detector) by extension 'ros'
+[0.210s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'src/hoop_detector' with type 'ros.ament_cmake' and name 'hoop_detector'[0m
+[0.211s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) using defaults
+[0.211s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) discover
+[0.211s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) using defaults
+[0.211s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) discover
+[0.211s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) using defaults
+[0.221s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'hik_camera' in 'src/hik_camera'
+[0.222s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(prefix_path) check parameters
+[0.222s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(prefix_path) discover
+[0.223s] [34mcolcon.colcon_installed_package_information.package_discovery[0m [1;30mDEBUG[0m [32mFound 11 installed packages in /home/niu/Desktop/ROBOCON25_simulation-master/install[0m
+[0.223s] [34mcolcon.colcon_installed_package_information.package_discovery[0m [1;30mDEBUG[0m [32mFound 2 installed packages in /home/niu/Desktop/ros2_hoop_detector/install[0m
+[0.224s] [34mcolcon.colcon_installed_package_information.package_discovery[0m [1;30mDEBUG[0m [32mFound 427 installed packages in /opt/ros/humble[0m
+[0.225s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(prefix_path) using defaults
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'cmake_args' from command line to 'None'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'cmake_target' from command line to 'None'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'cmake_clean_cache' from command line to 'False'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'cmake_clean_first' from command line to 'False'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'cmake_force_configure' from command line to 'False'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'ament_cmake_args' from command line to 'None'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'catkin_cmake_args' from command line to 'None'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'hoop_detector' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.254s] [34mcolcon.colcon_core.verb[0m [1;30mDEBUG[0m [32mBuilding package 'hoop_detector' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector', 'merge_install': False, 'path': '/home/niu/Desktop/ros2_hoop_detector/src/hoop_detector', 'symlink_install': True, 'test_result_base': None}[0m
+[0.254s] [34mcolcon.colcon_core.executor[0m [1;30mINFO[0m Executing jobs using 'parallel' executor
+[0.255s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mrun_until_complete[0m
+[0.255s] [34mcolcon.colcon_ros.task.ament_cmake.build[0m [1;30mINFO[0m Building ROS package in '/home/niu/Desktop/ros2_hoop_detector/src/hoop_detector' with build type 'ament_cmake'
+[0.255s] [34mcolcon.colcon_cmake.task.cmake.build[0m [1;30mINFO[0m Building CMake package in '/home/niu/Desktop/ros2_hoop_detector/src/hoop_detector'
+[0.256s] [34mcolcon.colcon_core.plugin_system[0m [1;30mINFO[0m Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.257s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.257s] [34mcolcon.colcon_core.shell[0m [1;30mDEBUG[0m [32mSkip shell extension 'dsv' for command environment[0m
+[0.263s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoking command in '/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/niu/Desktop/ROBOCON25_simulation-master/install/visualizer:/home/niu/Desktop/ROBOCON25_simulation-master/install/omni_mpc_controller:/home/niu/Desktop/ROBOCON25_simulation-master/install/new_teleotwistkeyboard:/home/niu/Desktop/ROBOCON25_simulation-master/install/lidar_avoidance:/home/niu/Desktop/ROBOCON25_simulation-master/install/laser:/opt/ros/humble /usr/bin/cmake --build /home/niu/Desktop/ros2_hoop_detector/build/hoop_detector -- -j20 -l20[0m
+[4.483s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoked command in '/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/niu/Desktop/ROBOCON25_simulation-master/install/visualizer:/home/niu/Desktop/ROBOCON25_simulation-master/install/omni_mpc_controller:/home/niu/Desktop/ROBOCON25_simulation-master/install/new_teleotwistkeyboard:/home/niu/Desktop/ROBOCON25_simulation-master/install/lidar_avoidance:/home/niu/Desktop/ROBOCON25_simulation-master/install/laser:/opt/ros/humble /usr/bin/cmake --build /home/niu/Desktop/ros2_hoop_detector/build/hoop_detector -- -j20 -l20[0m
+[4.506s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_environment_scripts_only(hoop_detector)
+[4.508s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector' for CMake module files
+[4.508s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector' for CMake config files
+[4.508s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('hoop_detector', 'cmake_prefix_path')
+[4.508s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/hook/cmake_prefix_path.ps1'
+[4.508s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/hook/cmake_prefix_path.dsv'
+[4.509s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/hook/cmake_prefix_path.sh'
+[4.509s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/lib'
+[4.509s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('hoop_detector', 'ld_library_path_lib')
+[4.509s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/hook/ld_library_path_lib.ps1'
+[4.510s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/hook/ld_library_path_lib.dsv'
+[4.510s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/hook/ld_library_path_lib.sh'
+[4.510s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/bin'
+[4.510s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/lib/pkgconfig/hoop_detector.pc'
+[4.510s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/lib/python3.10/site-packages'
+[4.510s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/bin'
+[4.510s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/package.ps1'
+[4.511s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package descriptor '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/package.dsv'
+[4.511s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/package.sh'
+[4.511s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/package.bash'
+[4.512s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/hoop_detector/package.zsh'
+[4.512s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_file_with_runtime_dependencies(/home/niu/Desktop/ros2_hoop_detector/install/hoop_detector/share/colcon-core/packages/hoop_detector)
+[4.522s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mclosing loop[0m
+[4.523s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mloop closed[0m
+[4.523s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mrun_until_complete finished with '2'[0m
+[4.523s] [34mcolcon.colcon_core.event_reactor[0m [1;30mDEBUG[0m [32mjoining thread[0m
+[4.527s] [34mcolcon.colcon_core.plugin_system[0m [1;30mINFO[0m Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[4.527s] [34mcolcon.colcon_core.plugin_system[0m [1;30mINFO[0m Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[4.527s] [34mcolcon.colcon_notification.desktop_notification[0m [1;30mINFO[0m Sending desktop notification using 'notify2'
+[4.536s] [34mcolcon.colcon_core.event_reactor[0m [1;30mDEBUG[0m [32mjoined thread[0m
+[4.537s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/home/niu/Desktop/ros2_hoop_detector/install/local_setup.ps1'
+[4.537s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix util module '/home/niu/Desktop/ros2_hoop_detector/install/_local_setup_util_ps1.py'
+[4.538s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/home/niu/Desktop/ros2_hoop_detector/install/setup.ps1'
+[4.539s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/home/niu/Desktop/ros2_hoop_detector/install/local_setup.sh'
+[4.539s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix util module '/home/niu/Desktop/ros2_hoop_detector/install/_local_setup_util_sh.py'
+[4.539s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/home/niu/Desktop/ros2_hoop_detector/install/setup.sh'
+[4.540s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/home/niu/Desktop/ros2_hoop_detector/install/local_setup.bash'
+[4.540s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/home/niu/Desktop/ros2_hoop_detector/install/setup.bash'
+[4.541s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/home/niu/Desktop/ros2_hoop_detector/install/local_setup.zsh'
+[4.541s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/home/niu/Desktop/ros2_hoop_detector/install/setup.zsh'
