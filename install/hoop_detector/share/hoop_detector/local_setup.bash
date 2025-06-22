@@ -1,1 +1,0 @@
-/home/niu/Desktop/ros2_hoop_detector/build/hoop_detector/ament_cmake_environment_hooks/local_setup.bash

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libhoop_detector_algorithm.a CMakeFiles/hoop_detector_algorithm.dir/home/niu/Desktop/ros2_hoop_detector/hoop_detector.cpp.o
-/usr/bin/ranlib libhoop_detector_algorithm.a

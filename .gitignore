@@ -1,0 +1,11 @@
+.vscode/
+build/
+log/
+# Ignore generated install dir
+install/
+# Ignore top-level source files that should not be tracked
+main.cpp
+hik_camera.cpp
+hik_camera.hpp
+hoop_detector.cpp
+hoop_detector.hpp
