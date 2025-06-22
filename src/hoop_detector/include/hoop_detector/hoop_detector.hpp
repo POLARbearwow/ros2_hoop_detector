@@ -23,6 +23,10 @@ public:
     
     // 主要的检测函数
     std::pair<cv::Point, int> detectCircle();
+    // 新增：椭圆检测函数
+    cv::RotatedRect detectEllipse();
+    // 使用椭圆特征解算PnP
+    cv::Vec3f solvePnP(const cv::RotatedRect & ellipse);
     
     // 可视化和调试
     cv::Mat showProcess() const;
@@ -65,6 +69,12 @@ private:
         int n_iterations = 200, 
         float threshold_dist = 8.0);
     
+    // 新增：椭圆拟合 RANSAC
+    cv::RotatedRect fitEllipseRANSAC(
+        const std::vector<cv::Point>& points,
+        int n_iterations = 200,
+        float threshold_norm = 0.1f);
+    
     // 成员变量
     // CircleDetector circle_detector_;
     // HoopDetector circle_detector_;
@@ -103,6 +113,7 @@ private:
     static constexpr int N_FRAMES_SMOOTHING = 15; // 滑动窗口大小
     static constexpr int N_TRIM = 2;             // 截尾个数
     std::deque<cv::Vec3f> recent_positions_;
+    std::deque<double>    recent_distances_;
     
     // 辅助函数
     void getRPY(const cv::Mat& R, double& roll, double& pitch, double& yaw);

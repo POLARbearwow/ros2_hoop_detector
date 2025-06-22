@@ -1,10 +1,11 @@
-#include "hoop_detector.hpp"
+#include "hoop_detector/hoop_detector.hpp"
 #include <iostream>
 #include <random>
 #include <vector>
 #include <cmath>
 #include <algorithm>
 #include <numeric>
+#include <set>
 
 void HoopDetector::logIfNeeded(const std::string& message) {
     auto current_time = std::chrono::steady_clock::now();
@@ -558,46 +559,162 @@ cv::Vec3f HoopDetector::solvePnP(const cv::Point& center, int radius) {
         std::cerr << "[HoopDetector] 标准错误: " << e.what() << std::endl;
         return cv::Vec3f(0, 0, 0);
     }
-} 
+}
 
+// =============================================
+// 椭圆拟合 RANSAC 辅助函数
+// =============================================
+cv::RotatedRect HoopDetector::fitEllipseRANSAC(
+    const std::vector<cv::Point>& points,
+    int n_iterations,
+    float threshold_norm) {
+
+    // 至少 5 个点才能拟合椭圆
+    if (points.size() < 5) {
+        return cv::RotatedRect();
+    }
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, static_cast<int>(points.size() - 1));
+
+    int best_inliers = 0;
+    cv::RotatedRect best_ellipse;
+
+    auto countInliers = [&](const cv::RotatedRect & ellipse) {
+        if (ellipse.size.width <= 0 || ellipse.size.height <= 0) return 0;
+
+        double a = ellipse.size.width  / 2.0;  // 半长轴
+        double b = ellipse.size.height / 2.0;  // 半短轴
+        double angle_rad = ellipse.angle * CV_PI / 180.0;
+        double cosA = std::cos(angle_rad);
+        double sinA = std::sin(angle_rad);
+
+        int inliers = 0;
+        for (const auto & pt : points) {
+            double dx = pt.x - ellipse.center.x;
+            double dy = pt.y - ellipse.center.y;
+
+            // 坐标旋转到椭圆轴对齐坐标系
+            double xRot =  dx * cosA + dy * sinA;
+            double yRot = -dx * sinA + dy * cosA;
+
+            double norm = (xRot * xRot) / (a * a) + (yRot * yRot) / (b * b);
+            if (std::fabs(norm - 1.0) < threshold_norm) {
+                ++inliers;
+            }
+        }
+        return inliers;
+    };
+
+    for (int iter = 0; iter < n_iterations; ++iter) {
+        // 随机采样 5 个不重复的点
+        std::set<int> idx_set;
+        while (idx_set.size() < 5) {
+            idx_set.insert(dis(gen));
+        }
+
+        std::vector<cv::Point> sample;
+        sample.reserve(5);
+        for (int idx : idx_set) {
+            sample.push_back(points[idx]);
+        }
+
+        cv::RotatedRect candidate;
+        try {
+            candidate = cv::fitEllipse(sample);
+        } catch (const cv::Exception &) {
+            continue; // 拟合失败，继续下一轮
+        }
+
+        int inliers = countInliers(candidate);
+        if (inliers > best_inliers) {
+            best_inliers = inliers;
+            best_ellipse = candidate;
+        }
+    }
+
+    if (best_inliers == 0) {
+        return cv::RotatedRect();
+    }
+
+    // 重新收集内点并做一次精细拟合
+    std::vector<cv::Point> inlier_pts;
+    double a = best_ellipse.size.width  / 2.0;
+    double b = best_ellipse.size.height / 2.0;
+    double angle_rad = best_ellipse.angle * CV_PI / 180.0;
+    double cosA = std::cos(angle_rad);
+    double sinA = std::sin(angle_rad);
+
+    for (const auto & pt : points) {
+        double dx = pt.x - best_ellipse.center.x;
+        double dy = pt.y - best_ellipse.center.y;
+        double xRot =  dx * cosA + dy * sinA;
+        double yRot = -dx * sinA + dy * cosA;
+        double norm = (xRot * xRot) / (a * a) + (yRot * yRot) / (b * b);
+        if (std::fabs(norm - 1.0) < threshold_norm) {
+            inlier_pts.push_back(pt);
+        }
+    }
+
+    if (inlier_pts.size() >= 5) {
+        try {
+            best_ellipse = cv::fitEllipse(inlier_pts);
+        } catch (const cv::Exception &) {
+            // 保留原先最佳
+        }
+    }
+
+    return best_ellipse;
+}
+
+// =============================================
+// 椭圆检测主函数
+// =============================================
 cv::RotatedRect HoopDetector::detectEllipse() {
     if (final_binary_.empty()) {
         throw std::runtime_error("[HoopDetector] 图像未处理");
     }
 
+    // 提取所有轮廓点
     std::vector<std::vector<cv::Point>> contours;
     std::vector<cv::Vec4i> hierarchy;
     cv::findContours(final_binary_, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
 
-    if (contours.empty()) {
-        logIfNeeded("[HoopDetector] 未检测到轮廓");
+    std::vector<cv::Point> all_points;
+    for (const auto & c : contours) {
+        all_points.insert(all_points.end(), c.begin(), c.end());
+    }
+
+    if (all_points.size() < 5) {
+        logIfNeeded("[HoopDetector] 点数量不足，无法拟合椭圆");
         return cv::RotatedRect();
     }
 
-    // 选择最大轮廓
-    size_t best_idx = 0;
-    double max_area = 0;
-    for (size_t i = 0; i < contours.size(); ++i) {
-        double area = cv::contourArea(contours[i]);
-        if (area > max_area) {
-            max_area = area;
-            best_idx = i;
+    cv::RotatedRect ellipse = fitEllipseRANSAC(all_points);
+
+    // 将 final_binary_ 转为可视化图像
+    cv::cvtColor(final_binary_, result_image_, cv::COLOR_GRAY2BGR);
+
+    if (ellipse.size.width > 0 && ellipse.size.height > 0) {
+        cv::ellipse(result_image_, ellipse, cv::Scalar(0,255,0), 3);
+        // 绘制所有轮廓线，便于调试
+        for(const auto & c : contours){
+            std::vector<std::vector<cv::Point>> cs = {c};
+            cv::drawContours(result_image_, cs, -1, cv::Scalar(0, 150, 255), 1);
         }
+        cv::circle(result_image_, ellipse.center, 5, cv::Scalar(0,0,255), -1);
+
+        // Solve PnP with ellipse if needed
+        // solvePnP(ellipse);
     }
-
-    if (contours[best_idx].size() < 5) 
-        return cv::RotatedRect();
-    }
-
-    cv::RotatedRect ellipse = cv::fitEllipse(contours[best_idx]);
-
-    // 可视化
-    result_image_ = original_image_.clone();
-    cv::ellipse(result_image_, ellipse, cv::Scalar(0,255,0), 3);
 
     return ellipse;
 }
 
+// =============================================
+// 椭圆解算 PnP
+// =============================================
 cv::Vec3f HoopDetector::solvePnP(const cv::RotatedRect& ellipse) {
     if (ellipse.size.width <= 0 || ellipse.size.height <= 0) {
         return cv::Vec3f(0,0,0);
@@ -608,27 +725,28 @@ cv::Vec3f HoopDetector::solvePnP(const cv::RotatedRect& ellipse) {
     }
 
     // 取 6 个特征点：主轴两端、次轴两端、45° 两点
-    float a = ellipse.size.width / 2.0f;   // 半长轴像素
-    float b = ellipse.size.height/ 2.0f;   // 半短轴像素
+    float a = ellipse.size.width  / 2.0f;   // 半长轴像素
+    float b = ellipse.size.height / 2.0f;   // 半短轴像素
     float angle = ellipse.angle * CV_PI / 180.0f;
 
     auto rot = [&](float x, float y){
-        float xr = x * cos(angle) - y * sin(angle);
-        float yr = x * sin(angle) + y * cos(angle);
+        float xr = x * std::cos(angle) - y * std::sin(angle);
+        float yr = x * std::sin(angle) + y * std::cos(angle);
         return cv::Point2f(ellipse.center.x + xr, ellipse.center.y + yr);
     };
 
-    std::vector<cv::Point2f> image_points;
-    image_points.push_back(rot( a, 0));   // +X
-    image_points.push_back(rot(-a, 0));   // -X
-    image_points.push_back(rot(0,  b));   // +Y
-    image_points.push_back(rot(0, -b));   // -Y
-    image_points.push_back(rot( a*sqrt(0.5f),  b*sqrt(0.5f)));  // 45°
-    image_points.push_back(rot(-a*sqrt(0.5f),  b*sqrt(0.5f)));  // 135°
+    std::vector<cv::Point2f> image_points = {
+        rot( a, 0),    // +X
+        rot(-a, 0),    // -X
+        rot(0,  b),    // +Y
+        rot(0, -b),    // -Y
+        rot( a*std::sqrt(0.5f),  b*std::sqrt(0.5f)),  // 45°
+        rot(-a*std::sqrt(0.5f),  b*std::sqrt(0.5f))   // 135°
+    };
 
     // 对应 3D 点（假设篮筐圆环在 Z=0 平面，直径已知）
-    float A = HOOP_DIAMETER_METERS / 2.0f;   // 长轴半径
-    float B = A * (b / a);                   // 根据像素轴比估计短轴半径 (近似)
+    float A = HOOP_DIAMETER_METERS / 2.0f; // 长轴半径
+    float B = A * (b / a);                 // 根据像素轴比估计短轴半径 (近似)
 
     std::vector<cv::Point3f> object_points = {
         { A, 0, 0}, {-A, 0, 0}, {0, B, 0}, {0,-B,0},
@@ -643,7 +761,7 @@ cv::Vec3f HoopDetector::solvePnP(const cv::RotatedRect& ellipse) {
         return cv::Vec3f(0,0,0);
     }
     return cv::Vec3f(tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2));
-} 
+}
 
 double HoopDetector::getSmoothedDistance(double new_distance) {
     // 1. 更新滑动窗口

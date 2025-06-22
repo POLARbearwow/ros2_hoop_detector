@@ -59,12 +59,11 @@ void HoopDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstSharedP
         detector_.loadImage(frame)
                  .createBinaryImage()
                  .processImage();
-        auto [center, radius] = detector_.detectCircle();
-        // const cv::Point & center = circle.first;
-        // int radius = circle.second;
 
-        if (radius > 0) {
-            cv::Vec3f tvec = detector_.solvePnP(center, radius);
+        cv::RotatedRect ellipse = detector_.detectEllipse();
+
+        if (ellipse.size.width > 0 && ellipse.size.height > 0) {
+            cv::Vec3f tvec = detector_.solvePnP(ellipse);
 
             geometry_msgs::msg::PoseStamped pose_msg;
             pose_msg.header = msg->header;
