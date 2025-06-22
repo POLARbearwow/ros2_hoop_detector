@@ -54,6 +54,7 @@ public:
 
     // 位置平滑
     cv::Vec3f getSmoothedPosition(const cv::Vec3f & new_pos);
+    // double getSmoothedDistance(double new_distance);  // 添加这行
 
 private:
     // 新增：日志控制相关
