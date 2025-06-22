@@ -103,6 +103,11 @@ install(DIRECTORY include/
   DESTINATION include/
 )
 
+# 安装launch文件  hik的不用单独执行 所以不用添加install （在intall/../hik_camera 中就少了launch）
+install(DIRECTORY launch/
+  DESTINATION share/${PROJECT_NAME}/launch
+)
+
 # 导出
 ament_export_include_directories(include)
 ament_export_libraries(hoop_detector_algorithm hoop_detector_component)
