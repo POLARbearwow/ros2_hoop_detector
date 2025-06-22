@@ -32,7 +32,7 @@ include_directories(
 
 # 1. 算法共享库
 add_library(hoop_detector_algorithm 
-  ../../hoop_detector.cpp
+  src/hoop_detector.cpp
 )
 
 set_target_properties(hoop_detector_algorithm PROPERTIES POSITION_INDEPENDENT_CODE ON)
@@ -41,7 +41,7 @@ set_target_properties(hoop_detector_algorithm PROPERTIES POSITION_INDEPENDENT_CO
 target_include_directories(hoop_detector_algorithm PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
-  ${CMAKE_CURRENT_SOURCE_DIR}/../..   # workspace root，包含 hoop_detector.hpp 文件
+  ${CMAKE_CURRENT_SOURCE_DIR}   # 修改为当前目录
 )
 
 target_link_libraries(hoop_detector_algorithm

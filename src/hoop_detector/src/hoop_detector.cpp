@@ -763,43 +763,43 @@ cv::Vec3f HoopDetector::solvePnP(const cv::RotatedRect& ellipse) {
     return cv::Vec3f(tvec.at<double>(0), tvec.at<double>(1), tvec.at<double>(2));
 }
 
-double HoopDetector::getSmoothedDistance(double new_distance) {
-    // 1. 更新滑动窗口
-    recent_distances_.push_back(new_distance);
-    if (recent_distances_.size() > N_FRAMES_SMOOTHING) {
-        recent_distances_.pop_front(); // 移除最旧的数据，维持窗口大小
-    }
+// double HoopDetector::getSmoothedDistance(double new_distance) {
+//     // 1. 更新滑动窗口
+//     recent_distances_.push_back(new_distance);
+//     if (recent_distances_.size() > N_FRAMES_SMOOTHING) {
+//         recent_distances_.pop_front(); // 移除最旧的数据，维持窗口大小
+//     }
 
-    // 2. 检查窗口内的数据是否足够进行截尾平均
-    // 至少需要 (2 * N_TRIM + 1) 个数据点才能执行截尾
-    if (recent_distances_.size() < (2 * N_TRIM + 1)) {
-        // 如果数据不足，则返回简单的移动平均值
-        if (recent_distances_.empty()) {
-            return 0.0; // 或者返回一个表示无效的值
-        }
-        double sum = std::accumulate(recent_distances_.begin(), recent_distances_.end(), 0.0);
-        return sum / recent_distances_.size();
-    }
+//     // 2. 检查窗口内的数据是否足够进行截尾平均
+//     // 至少需要 (2 * N_TRIM + 1) 个数据点才能执行截尾
+//     if (recent_distances_.size() < (2 * N_TRIM + 1)) {
+//         // 如果数据不足，则返回简单的移动平均值
+//         if (recent_distances_.empty()) {
+//             return 0.0; // 或者返回一个表示无效的值
+//         }
+//         double sum = std::accumulate(recent_distances_.begin(), recent_distances_.end(), 0.0);
+//         return sum / recent_distances_.size();
+//     }
 
-    // 3. 执行截尾平均
-    // a. 将当前窗口的数据复制到一个vector中，以便排序
-    std::vector<double> sorted_window(recent_distances_.begin(), recent_distances_.end());
+//     // 3. 执行截尾平均
+//     // a. 将当前窗口的数据复制到一个vector中，以便排序
+//     std::vector<double> sorted_window(recent_distances_.begin(), recent_distances_.end());
 
-    // b. 对复制的窗口进行排序
-    std::sort(sorted_window.begin(), sorted_window.end());
+//     // b. 对复制的窗口进行排序
+//     std::sort(sorted_window.begin(), sorted_window.end());
 
-    // c. 计算剔除首尾元素后的和
-    // 使用迭代器范围来求和，跳过开头N_TRIM个和结尾N_TRIM个元素
-    double sum = std::accumulate(
-        sorted_window.begin() + N_TRIM, // 跳过N_TRIM个最小值
-        sorted_window.end() - N_TRIM,   // 跳过N_TRIM个最大值
-        0.0
-    );
+//     // c. 计算剔除首尾元素后的和
+//     // 使用迭代器范围来求和，跳过开头N_TRIM个和结尾N_TRIM个元素
+//     double sum = std::accumulate(
+//         sorted_window.begin() + N_TRIM, // 跳过N_TRIM个最小值
+//         sorted_window.end() - N_TRIM,   // 跳过N_TRIM个最大值
+//         0.0
+//     );
 
-    // d. 计算平均值
-    int count_to_average = sorted_window.size() - (2 * N_TRIM);
-    return sum / count_to_average;
-}
+//     // d. 计算平均值
+//     int count_to_average = sorted_window.size() - (2 * N_TRIM);
+//     return sum / count_to_average;
+// }
 
 cv::Vec3f HoopDetector::getSmoothedPosition(const cv::Vec3f & new_pos) {
     // 更新窗口
